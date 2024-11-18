@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: myblog-app
-        image: amitambig/blogappimg:v4
+        image: amitambig/blogappimg:v5
         ports:
         - containerPort: 8080
