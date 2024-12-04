@@ -1,36 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myblog-app
-  labels:
-    app: myblog-app
+  name: bloggingapp-deployment
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      app: myblog-app
+      app: bloggingapp
+  replicas: 2
   template:
     metadata:
       labels:
-        app: myblog-app
+        app: bloggingapp
     spec:
       containers:
-      - name: myblog-app
-        image: amitambig/blogappimg:latest
-        ports:
-        - containerPort: 8080
-
-
+        - name: bloggingapp
+          image: amitambig/blogappimg:latest # Updated image to private DockerHub image
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+       # Reference to the Docker registry secret
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: myblog-app-service
+  name: bloggingapp-ssvc
 spec:
-  type: LoadBalancer
-  ports:
-  - name: http
-    port: 80
-    targetPort: 8080
-    protocol: TCP
   selector:
-    app: myblog-app
+    app: bloggingapp
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
