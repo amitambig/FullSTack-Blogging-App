@@ -16,6 +16,21 @@ spec:
     spec:
       containers:
       - name: myblog-app
-        image: amitambig/blogappimg:v24
+        image: amitambig/blogappimg:latest
         ports:
         - containerPort: 8080
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: myblog-app-service
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: myblog-app
