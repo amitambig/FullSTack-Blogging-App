@@ -16,11 +16,7 @@ spec:
     spec:
       containers:
       - name: myblog-app
-<<<<<<< HEAD:Configuration_files/ds.yml
         image: amitambig/blogappimg:latest
-=======
-        image: amitambig/blogappimg:v5
->>>>>>> fc2ecc9773458f4257fbf210cb27ac80340ac968:Configuration_files/deployment.yml
         ports:
         - containerPort: 8080
 
