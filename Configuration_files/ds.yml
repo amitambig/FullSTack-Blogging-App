@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: bloggingapp
-          image: amitambig/blogappimg:v2
+          image: amitambig/blogappimg:v3
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
